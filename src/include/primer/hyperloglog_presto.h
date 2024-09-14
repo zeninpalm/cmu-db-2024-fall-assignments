@@ -73,16 +73,19 @@ class HyperLogLogPresto {
     return 0;
   }
 
-  /** @brief Structure holding dense buckets (or also known as registers). */
-  std::vector<std::bitset<DENSE_BUCKET_SIZE>> dense_bucket_;
-
-  /** @brief Structure holding overflow buckets. */
-  std::unordered_map<uint16_t, std::bitset<OVERFLOW_BUCKET_SIZE>> overflow_bucket_;
+  auto CountOfRightmostContinuousZeros(const std::bitset<64> &bset) const -> uint64_t;
 
   /** @brief Storing cardinality value */
   uint64_t cardinality_;
 
   // TODO(student) - can add more data structures as required
+  int16_t n_leading_bits_;
+
+  /** @brief Structure holding dense buckets (or also known as registers). */
+  std::vector<std::bitset<DENSE_BUCKET_SIZE>> dense_bucket_;
+
+  /** @brief Structure holding overflow buckets. */
+  std::unordered_map<uint16_t, std::bitset<OVERFLOW_BUCKET_SIZE>> overflow_bucket_;
 };
 
 }  // namespace bustub
